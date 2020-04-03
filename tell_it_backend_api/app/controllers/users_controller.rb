@@ -5,13 +5,15 @@ class UsersController < ApplicationController
   def index
     @users = User.all
 
-    render json: @users
+    render json: @users.to_json(include: :messages)
   end
 
   # GET /users/1
   def show
     user_id = @user.messages
     render json: {user: @user, messages: user_id}
+    # user = User.where(user_id: params[:user_id])
+# render json: user
   end
 
   # POST /users
