@@ -10,7 +10,8 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
-    render json: @user
+    user_id = @user.messages
+    render json: {user: @user, messages: user_id}
   end
 
   # POST /users
